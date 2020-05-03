@@ -10,5 +10,5 @@ public interface LancamentoService {
 	Lancamento buscar(Long codigo);
 	Lancamento criar(Lancamento lancamento);
 	void remover(Long codigo);
-	Lancamento atualizar(Long codigo, Lancamento categoria);
+	Lancamento atualizar(Long codigo, Lancamento lancamento);
 }

@@ -26,7 +26,7 @@ public class Pessoa {
 	private String nome;
 	
 	@NotNull
-	private Boolean ativo;
+	private boolean ativo;
 	
 	@Embedded
 	private Endereco endereco;

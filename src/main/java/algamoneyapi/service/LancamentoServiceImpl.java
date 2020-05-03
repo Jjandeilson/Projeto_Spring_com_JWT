@@ -49,7 +49,7 @@ public class LancamentoServiceImpl implements LancamentoService{
 	@Override
 	public Lancamento atualizar(Long codigo, Lancamento lancamento) {
 		Optional<Lancamento> lancamentoOp = verificarLancamentoNoBanco(codigo);
-		pessoaInexistenteOUInativa(lancamentoOp.get().getPessoa().getCodigo());
+		pessoaInexistenteOUInativa(lancamento.getPessoa().getCodigo());
 		BeanUtils.copyProperties(lancamento, lancamentoOp.get(), "codigo");
 		return lancamentoRepository.save(lancamentoOp.get());
 	}
@@ -67,7 +67,7 @@ public class LancamentoServiceImpl implements LancamentoService{
 	private void pessoaInexistenteOUInativa(Long codigo) {
 		Optional<Pessoa> pessoa = pessoaRepository.findById(codigo);
 		
-		if(!pessoa.isPresent() || !pessoa.get().getAtivo()) {
+		if(!pessoa.isPresent() || !pessoa.get().isAtivo()) {
 			throw new PessoaInexistenteOuInativa();
 		}
 	}
